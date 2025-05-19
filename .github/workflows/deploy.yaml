@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - run: docker build -t cygnetops/react-test -f Dockerfile.dev .
-      - run: docker run -e CI=true cygnetops/react-test npm test
+      - run: docker run -e CI=true cygnetops/react-test npm test -- --coverage
 
       - name: Prepare deploy folder
         run: |
